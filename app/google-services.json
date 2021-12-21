@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297816019405",
+    "project_id": "gathering-c4a13",
+    "storage_bucket": "gathering-c4a13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297816019405:android:054a10e43aaa86200f3484",
+        "android_client_info": {
+          "package_name": "com.example.gathering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297816019405-6maj7nmk45ca8o256stup9ja8kldgbik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy2D9PdQJYljWqJWRMh_rGrnh8WvpgWmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297816019405-6maj7nmk45ca8o256stup9ja8kldgbik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
