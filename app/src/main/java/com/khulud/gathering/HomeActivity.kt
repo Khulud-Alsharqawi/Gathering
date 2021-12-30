@@ -12,23 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gathering.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import com.khulud.gathering.adapter.EventsAdapter
+
 import com.khulud.gathering.model.EventsList
 
 
 class HomeActivity : AppCompatActivity(R.layout.activity_home) {
 
-   // private lateinit var navController: NavController
+    // private lateinit var navController: NavController
 
     lateinit var recycleView: RecyclerView
 
     val eventDL = mutableListOf<EventsList>()
 
-    val adapter = EventsAdapter(eventDL,applicationContext)
+//    val adapter = EventsAdapter(eventDL, applicationContext)
 
     // private lateinit var referenceDB: DatabaseReference
 
@@ -37,13 +35,13 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-       firestoreDb = FirebaseFirestore.getInstance()
-
+        Log.e("TAG", "Docmmmmmmmmmmmm 1")
+        firestoreDb = FirebaseFirestore.getInstance()
+        Log.e("TAG", "Docmmmmmmmmmmmm 2")
         val postRef = firestoreDb.collection("Events-DB")
         postRef.addSnapshotListener { snapshot, e ->
             for (documents in snapshot!!.documents) {
-                Log.e("TAG", "Docmmmmmmmmmmmm ${documents.id}: ${documents.data?.values}")
+                Log.e("TAG", "Docmmmmmmmmmmmm 3")
 
                 val allEvents = documents.toObject<EventsList>()
                 Log.e("TAG", "documents is $allEvents")
@@ -51,50 +49,50 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
                     eventDL.add(allEvents)
                 }
             }
-            Log.e( "OUT OF FOR LOOOP: ","the list contains = ${eventDL}" )
+            Log.e("OUT OF FOR LOOOP: ", "the list contains = ${eventDL}")
         }
 
-
+        Log.e("TAG", "Docmmmmmmmmmmmm 4")
 /*        val navHostFragment = supportFragmentManager
 //
 //            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 //        navController = navHostFragment.navController
 //        setupActionBarWithNavController(this, navController) */
 
-        recycleView=findViewById(R.id.eventsRecycleView)
-        recycleView.layoutManager =LinearLayoutManager(this)
+        recycleView = findViewById(R.id.eventsRecycleView)
+        recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
-
-       // Log.e("TAG", "before adapter ${eventDL}")
+        Log.e("TAG", "Docmmmmmmmmmmmm 5")
+        // Log.e("TAG", "before adapter ${eventDL}")
 //        val adapter = EventsAdapter(eventDL,applicationContext)
-        recycleView.adapter=adapter
-
+//        recycleView.adapter = adapter
+        Log.e("TAG", "Docmmmmmmmmmmmm 6")
         val userId = intent.getStringExtra("user_id")
         val logoutButton = findViewById<Button>(R.id.logout)
-
-        val decoration=DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
+        Log.e("TAG", "Docmmmmmmmmmmmm 7")
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recycleView.addItemDecoration(decoration)
         recycleView.setHasFixedSize(true)
-
-       /* referenceDB=
-/               FirebaseDatabase.getInstance("https://console.firebase.google.com/project/gathering-c4a13/firestore/data/~2FEvents-DB~2F0pMYLtpQcTlOa0nu1dpj")
-//                    .getReference()*/
-
+        Log.e("TAG", "Docmmmmmmmmmmmm 8")
+        /* referenceDB=
+ /               FirebaseDatabase.getInstance("https://console.firebase.google.com/project/gathering-c4a13/firestore/data/~2FEvents-DB~2F0pMYLtpQcTlOa0nu1dpj")
+ //                    .getReference()*/
+        Log.e("TAG", "Docmmmmmmmmmmmm 9")
         findViewById<TextView>(R.id.userId).text = userId
         logoutButton.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this@HomeActivity, MainActivity::class.java))
-
-           //dataFB
-           listAllFiles()
+            Log.e("TAG", "Docmmmmmmmmmmmm 10")
+            //dataFB
+            listAllFiles()
         }
 
- /*       fun onSupportNavigateUp(): Boolean {
-            return navController.navigateUp() || super.onSupportNavigateUp()
-        } */
+        /*       fun onSupportNavigateUp(): Boolean {
+                   return navController.navigateUp() || super.onSupportNavigateUp()
+               } */
 
     }
- //   val dataFB: Unit
+    //   val dataFB: Unit
 //        get() {
 //            var referenceDB: DatabaseReference
 //            referenceDB.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -117,27 +115,29 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
 //
 //        }
 
-    private fun listAllFiles(){
-
+    private fun listAllFiles() {
+        Log.e("TAG", "Docmmmmmmmmmmmm 11")
         firestoreDb = FirebaseFirestore.getInstance()
-
+        Log.e("TAG", "Docmmmmmmmmmmmm 12")
         firestoreDb.collection("Events-DB")
-        .addSnapshotListener(object :EventListener<QuerySnapshot> {
-            override fun onEvent(
-                value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error !=null){
-                    return
-                }
-                for (de : DocumentChange in value?.documentChanges!!){
-                    if (de.type == DocumentChange.Type.ADDED){
-                        eventDL.add(de.document.toObject(EventsList::class.java))
+            .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                override fun onEvent(
+                    value: QuerySnapshot?, error: FirebaseFirestoreException?
+                ) {  Log.e("TAG", "Docmmmmmmmmmmmm 13")
+                    if (error != null) {
+                        return
                     }
+                    for (de: DocumentChange in value?.documentChanges!!) {
+                        if (de.type == DocumentChange.Type.ADDED) {
+                            eventDL.add(de.document.toObject(EventsList::class.java))
+                        }
+                    }
+                    Log.e("TAG", "Docmmmmmmmmmmmm 14")
+//                    adapter.notifyDataSetChanged()
                 }
 
-                adapter.notifyDataSetChanged()
-            }
-        })
-              }
+            })
+    }
 
 }
 
