@@ -1,12 +1,9 @@
 package com.khulud.gathering.fragmnets
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -37,7 +34,7 @@ class SignInFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentSignInBinding = FragmentSignInBinding.inflate(inflater,container,false)
+        val fragmentSignInBinding = FragmentSignInBinding.inflate(inflater, container, false)
         binding = fragmentSignInBinding
         return fragmentSignInBinding.root
     }
@@ -47,33 +44,9 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //  val email =findViewById<EditText>(R.id.login_email).text.toString()
-binding?.btnLogin?.setOnClickListener {
-    signIn()
-}
-//        val email = binding?.loginEmail?.editableText.toString()
-//
-//        val password = binding?.loginPassword?.editableText.toString()
-//        fun signIn() {
-//            if (email.isNotEmpty() && password.isNotEmpty()) {
-//                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-//                    .addOnCompleteListener { task ->
-//                        if (task.isSuccessful) {
-//                            val firebaseUser: FirebaseUser = task.result!!.user!!
-//                            Toast.makeText(this.requireContext(), "Logged in", Toast.LENGTH_SHORT)
-//                                .show()
-////                            val intent= Intent(this.requireContext(), HomeActivity::class.java)
-//                            findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
-////                            ("user_id", firebaseUser.uid)
-//                        } else {
-//                            Toast.makeText(this.requireContext(), "Error", Toast.LENGTH_SHORT)
-//                                .show()
-//                        }
-//                    }
-//                    .addOnFailureListener {
-//                        println(it.message)
-//                    }
-//            }
-//        }
+        binding?.btnLogin?.setOnClickListener {
+            signIn()
+        }
     }
 
     fun signIn() {
@@ -87,9 +60,7 @@ binding?.btnLogin?.setOnClickListener {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         Toast.makeText(this.requireContext(), "Logged in", Toast.LENGTH_SHORT)
                             .show()
-//                            val intent= Intent(this.requireContext(), HomeActivity::class.java)
                         findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
-//                            ("user_id", firebaseUser.uid)
                     } else {
                         Toast.makeText(this.requireContext(), "Error", Toast.LENGTH_SHORT)
                             .show()
@@ -100,9 +71,4 @@ binding?.btnLogin?.setOnClickListener {
                 }
         }
     }
-
-
-
-//        binding?.btnSign?.setOnClickListener {
-//            findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
-        }
+}
