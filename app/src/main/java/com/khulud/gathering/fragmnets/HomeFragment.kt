@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.gathering.R
@@ -17,11 +19,16 @@ import com.khulud.gathering.model.EventsList
 private lateinit var db: FirebaseFirestore
 
 class HomeFragment : Fragment() {
+
+    lateinit var toggle:ActionBarDrawerToggle
+
     private var binding: FragmentHomeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+//        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+//        binding.
+//        val navView:NavgationView
 
     }
 
@@ -40,6 +47,7 @@ class HomeFragment : Fragment() {
 
 
         return fragmentHomeBinding.root
+
         this.EventChangeListener()
 
     }

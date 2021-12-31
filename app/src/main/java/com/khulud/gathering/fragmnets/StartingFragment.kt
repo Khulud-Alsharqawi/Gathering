@@ -31,13 +31,13 @@ class StartingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      binding?.btnText1?.setOnClickListener{
+      binding?.btnToSignIn?.setOnClickListener{
           findNavController().navigate(com.example.gathering.R.id.starting_to_signin)
 
 
       }
 
-        binding?.btnText2?.setOnClickListener {
+        binding?.btnToReg?.setOnClickListener {
             findNavController().navigate(com.example.gathering.R.id.action_startingFragment_to_registerFragment)
         }
 
