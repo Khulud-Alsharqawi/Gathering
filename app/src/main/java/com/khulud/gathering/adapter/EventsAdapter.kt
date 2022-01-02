@@ -7,15 +7,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
-import androidx.navigation.fragment.FragmentNavigator
-import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.gathering.R
-import com.google.firebase.auth.ktx.actionCodeSettings
-import com.khulud.gathering.fragmnets.DetailsFragment
-import com.khulud.gathering.fragmnets.HomeFragment
 import com.khulud.gathering.fragmnets.HomeFragmentDirections
 import com.khulud.gathering.model.EventsList
 
@@ -48,9 +44,12 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) : RecyclerView.A
 
         holder.textView.text = item.eventName
         holder.btnDetails.setOnClickListener {
-//=============================================stuck heeeeeer!!!!
-            HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
-        //action_homeFragment_to_detailsFragment
+//=============================================
+// action_homeFragment_to_detailsFragment
+            var action =
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+            holder.itemView.findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+
         }
     }
 

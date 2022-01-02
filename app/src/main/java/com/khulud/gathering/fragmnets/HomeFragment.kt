@@ -20,7 +20,7 @@ private lateinit var db: FirebaseFirestore
 
 class HomeFragment : Fragment() {
 
-    lateinit var toggle:ActionBarDrawerToggle
+   // lateinit var toggle:ActionBarDrawerToggle
 
     private var binding: FragmentHomeBinding? = null
 
