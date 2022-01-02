@@ -1,22 +1,79 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<?xml version="1.0" encoding="utf-8"?>
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context="com.khulud.gathering.fragmnets.DetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/detailsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DETAILS PAGE"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.287" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <variable
+            name="viewModel"
+            type="com.khulud.gathering.model.EventsViewModel" />
+        <variable
+            name="detailsFragment"
+            type="com.khulud.gathering.fragmnets.DetailsFragment" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="398dp"
+                android:layout_height="198dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+            <!--            imageUrl="@{viewModel.imageUrl}"
+            -->
+
+            <TextView
+                android:id="@+id/eventName"
+                android:layout_width="318dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:text="@{viewModel.eventName}"
+                android:textSize="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.172"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/descreption"
+                android:layout_width="209dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="28dp"
+                android:text="@{viewModel.eventDescription}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.076"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventName" />
+
+
+            <ImageView
+                android:id="@+id/btnShare"
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:onClick="@{() -> detailsFragment.eventName}"
+                android:src="@drawable/ic_baseline_share_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descreption"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

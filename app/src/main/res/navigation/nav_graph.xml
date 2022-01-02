@@ -8,7 +8,10 @@
         android:id="@+id/detailsFragment"
         android:name="com.khulud.gathering.fragmnets.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument android:name="eventName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.khulud.gathering.fragmnets.ProfileFragment"

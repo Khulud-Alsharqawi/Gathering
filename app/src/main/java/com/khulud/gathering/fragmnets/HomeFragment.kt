@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.gathering.R
 import com.google.firebase.auth.FirebaseAuth
@@ -15,13 +16,15 @@ import com.example.gathering.databinding.FragmentHomeBinding
 import com.google.firebase.firestore.*
 import com.khulud.gathering.adapter.EventsAdapter
 import com.khulud.gathering.model.EventsList
+import com.khulud.gathering.model.EventsViewModel
 
-private lateinit var db: FirebaseFirestore
 
 class HomeFragment : Fragment() {
 
-   // lateinit var toggle:ActionBarDrawerToggle
+    private lateinit var db: FirebaseFirestore
 
+    // lateinit var toggle:ActionBarDrawerToggle
+  //  private val viewModel: EventsViewModel by viewModels()
     private var binding: FragmentHomeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,13 +42,18 @@ class HomeFragment : Fragment() {
     ): View? {
         val fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         binding = fragmentHomeBinding
-
-
+        binding?.lifecycleOwner = this
         // adapter with data on parameter
         binding?.eventsRecycleView?.adapter = EventsAdapter(EventChangeListener())
+        //{ item ->
+//            run {
+//                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+//
+//            }
+
         binding?.eventsRecycleView?.setHasFixedSize(true)
 
-
+      //  binding?.viewModel=  viewModel
         return fragmentHomeBinding.root
 
         this.EventChangeListener()
@@ -58,9 +66,6 @@ class HomeFragment : Fragment() {
         binding?.logout?.setOnClickListener {
             signout()
         }
-
-
-
 
     }
 
@@ -98,6 +103,7 @@ class HomeFragment : Fragment() {
 
     }
 }
+
 
 
 

@@ -18,21 +18,12 @@
             android:label="Gathering"
             tools:ignore="Instantiatable"
             android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name="com.khulud.gathering.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.khulud.gathering.LoginActivity"
-            android:exported="false"
-            tools:ignore="DuplicateActivity" />
-        <activity
-            android:name="com.khulud.gathering.HomeActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.khulud.gathering.MainActivity"
             android:exported="true">

@@ -28,7 +28,7 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsAdapter.ViewHolder {
         val itemView=  LayoutInflater.from(parent.context).inflate(R.layout.events_list,
-             parent, false)
+            parent, false)
         return ViewHolder(itemView)
 
     }
@@ -47,7 +47,7 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) : RecyclerView.A
 //=============================================
 // action_homeFragment_to_detailsFragment
             var action =
-                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment()
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName?:"")
             holder.itemView.findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
 
         }
