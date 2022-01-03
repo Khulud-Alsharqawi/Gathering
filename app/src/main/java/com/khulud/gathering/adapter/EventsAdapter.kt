@@ -15,8 +15,7 @@ import com.example.gathering.R
 import com.khulud.gathering.fragmnets.HomeFragmentDirections
 import com.khulud.gathering.model.EventsList
 
-
-class EventsAdapter(private val EveList: ArrayList<EventsList>) :
+ class EventsAdapter(private val EveList: ArrayList<EventsList>) :
     RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,14 +43,13 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) :
         Glide.with(holder.imageView)
             .load(imgUri)
             .into(holder.imageView)
-
         holder.textView.text = item.eventName
         holder.btnDetails.setOnClickListener {
 
-            var action =
-                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName ?: "")
-            holder.itemView.findNavController()
-                .navigate(R.id.action_homeFragment_to_detailsFragment)
+
+            val action =HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName ?: "")
+            holder.itemView.findNavController().navigate(action)
+
 
         }
     }

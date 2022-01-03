@@ -61,6 +61,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //        val userId = intent.getStringExtra("user_id")
 //       findViewById<TextView>(R.id.userId).text = userId
+
+
+
+
         binding?.logout?.setOnClickListener {
             signout()
         }

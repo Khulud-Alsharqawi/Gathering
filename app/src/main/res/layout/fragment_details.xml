@@ -22,73 +22,108 @@
         android:scrollbars="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
             <ImageView
                 android:id="@+id/imageViewEvent"
-                android:layout_width="398dp"
-
-                android:layout_height="198dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="-50dp"
+                app:imageUrl="@{viewModel.imageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
-            <!--            android:imageUrl="@{viewModel.imageUrl}"           -->
 
-            <TextView
-                android:id="@+id/detailsEventName"
-                android:layout_width="318dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:text="@{viewModel.eventName}"
-                android:textSize="45dp"
-                android:hint="Event Name"
+            <androidx.cardview.widget.CardView
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:backgroundTint="@color/white_dark"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.172"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewEvent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/detailsEventName"
+                            android:layout_width="318dp"
+                            android:layout_height="60dp"
+                            android:hint="Event Name"
+                            android:text="@{viewModel.eventName}"
+                            android:textColor="@color/Blue_200"
+                            android:textSize="45dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.172"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/detailsEventDescreption"
-                android:layout_width="209dp"
-                android:layout_height="39dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:textColor="@color/black"
                 android:hint="Event Info"
                 android:text="@{viewModel.eventDescription}"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.076"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailsEventName" />
 
-            <ImageView
-                android:id="@+id/btnLocation"
-                android:layout_width="33dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_location_on_24"
-                app:layout_constraintBottom_toTopOf="@+id/btnShare"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.041"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption"
-                app:layout_constraintVertical_bias="0.0" />
+                        <ImageView
+                            android:id="@+id/btnLocation"
+                            android:layout_width="43dp"
+                            android:layout_height="41dp"
+                            android:layout_marginTop="24dp"
+                            android:src="@drawable/ic_baseline_location_on_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption" />
 
-            <ImageView
-                android:id="@+id/btnShare"
-                android:layout_width="33dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_share_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.041"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnLocation"
-                app:layout_constraintVertical_bias="0.0" />
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:text="Riyadh, Saudi Arabia"
+                            android:textSize="12dp"
+                            android:textStyle="italic"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/btnShare"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/btnLocation" />
 
+                        <ImageView
+                            android:id="@+id/btnShare"
+                            android:layout_width="41dp"
+                            android:layout_height="36dp"
+                            android:layout_marginEnd="16dp"
+                            android:src="@drawable/ic_baseline_share_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
