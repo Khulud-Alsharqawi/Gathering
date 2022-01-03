@@ -20,10 +20,9 @@ import com.khulud.gathering.model.EventsList
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
-    lateinit var binding: ActivityMainBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
 
         val navMenu = findViewById<NavigationView>(R.id.nav_view)
-
         navMenu.setupWithNavController(navController)
         //  setupActionBarWithNavController(navController)
         //    val topAppBar = binding.topAppBar

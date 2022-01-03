@@ -28,52 +28,67 @@
 
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageViewEvent"
                 android:layout_width="398dp"
+
                 android:layout_height="198dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
-            <!--            imageUrl="@{viewModel.imageUrl}"
-            -->
+            <!--            android:imageUrl="@{viewModel.imageUrl}"           -->
 
             <TextView
-                android:id="@+id/eventName"
+                android:id="@+id/detailsEventName"
                 android:layout_width="318dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="16dp"
                 android:text="@{viewModel.eventName}"
-                android:textSize="60dp"
+                android:textSize="45dp"
+                android:hint="Event Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.172"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/imageViewEvent" />
 
             <TextView
-                android:id="@+id/descreption"
+                android:id="@+id/detailsEventDescreption"
                 android:layout_width="209dp"
                 android:layout_height="39dp"
                 android:layout_marginTop="28dp"
+                android:hint="Event Info"
                 android:text="@{viewModel.eventDescription}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.076"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventName" />
+                app:layout_constraintTop_toBottomOf="@+id/detailsEventName" />
 
+            <ImageView
+                android:id="@+id/btnLocation"
+                android:layout_width="33dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_location_on_24"
+                app:layout_constraintBottom_toTopOf="@+id/btnShare"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/btnShare"
-                android:layout_width="48dp"
-                android:layout_height="46dp"
-                android:onClick="@{() -> detailsFragment.eventName}"
+                android:layout_width="33dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_baseline_share_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descreption"
+                app:layout_constraintTop_toBottomOf="@+id/btnLocation"
                 app:layout_constraintVertical_bias="0.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

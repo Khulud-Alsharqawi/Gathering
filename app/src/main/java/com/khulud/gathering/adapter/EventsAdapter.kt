@@ -16,19 +16,22 @@ import com.khulud.gathering.fragmnets.HomeFragmentDirections
 import com.khulud.gathering.model.EventsList
 
 
-class EventsAdapter(private val EveList: ArrayList<EventsList>) : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
+class EventsAdapter(private val EveList: ArrayList<EventsList>) :
+    RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val imageView: ImageView = itemView.findViewById(R.id.imageItem)
         val textView: TextView = itemView.findViewById(R.id.eventName)
-        val btnDetails:Button =itemView.findViewById(R.id.btnDetails)
+        val btnDetails: Button = itemView.findViewById(R.id.btnDetails)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsAdapter.ViewHolder {
-        val itemView=  LayoutInflater.from(parent.context).inflate(R.layout.events_list,
-            parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.events_list,
+            parent, false
+        )
         return ViewHolder(itemView)
 
     }
@@ -44,11 +47,11 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) : RecyclerView.A
 
         holder.textView.text = item.eventName
         holder.btnDetails.setOnClickListener {
-//=============================================
-// action_homeFragment_to_detailsFragment
+
             var action =
-                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName?:"")
-            holder.itemView.findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName ?: "")
+            holder.itemView.findNavController()
+                .navigate(R.id.action_homeFragment_to_detailsFragment)
 
         }
     }

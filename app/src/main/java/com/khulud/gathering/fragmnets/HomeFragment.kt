@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
 
     // lateinit var toggle:ActionBarDrawerToggle
-  //  private val viewModel: EventsViewModel by viewModels()
+    private val viewModel: EventsViewModel by viewModels()
     private var binding: FragmentHomeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,15 +46,11 @@ class HomeFragment : Fragment() {
         binding?.lifecycleOwner = this
         // adapter with data on parameter
         binding?.eventsRecycleView?.adapter = EventsAdapter(EventChangeListener())
-        //{ item ->
-//            run {
-//                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
-//
-//            }
 
         binding?.eventsRecycleView?.setHasFixedSize(true)
 
-      //  binding?.viewModel=  viewModel
+       binding?.viewModel=  viewModel
+
         return fragmentHomeBinding.root
 
         this.EventChangeListener()
@@ -62,7 +59,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+//        val userId = intent.getStringExtra("user_id")
+//       findViewById<TextView>(R.id.userId).text = userId
         binding?.logout?.setOnClickListener {
             signout()
         }
