@@ -12,10 +12,6 @@ import com.google.android.gms.common.api.Api
 
 import com.google.android.gms.tasks.OnCompleteListener
 
-
-
-
-
 class EventsViewModel : ViewModel() {
     private var _event = MutableLiveData<List<EventsList>>()
     val event: MutableLiveData<List<EventsList>> get() = _event
@@ -35,7 +31,6 @@ class EventsViewModel : ViewModel() {
     init {
         getEvents()
         setSelectedEventsList()
-//        getEventsById(eventName.toString())
     }
 
     private fun getEvents() {
@@ -43,9 +38,7 @@ class EventsViewModel : ViewModel() {
     }
 
     fun setSelectedEventsList() {
-        _selected.value = selected.value
-    }
-
+        _selected.value = selected.value    }
 
 }
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.khulud.gathering.fragmnets.DetailsFragment">
@@ -10,6 +9,7 @@
         <variable
             name="viewModel"
             type="com.khulud.gathering.model.EventsViewModel" />
+
         <variable
             name="detailsFragment"
             type="com.khulud.gathering.fragmnets.DetailsFragment" />
@@ -59,8 +59,8 @@
 
                         <TextView
                             android:id="@+id/detailsEventName"
-                            android:layout_width="318dp"
-                            android:layout_height="60dp"
+                            android:layout_width="297dp"
+                            android:layout_height="56dp"
                             android:hint="Event Name"
                             android:text="@{viewModel.eventName}"
                             android:textColor="@color/Blue_200"
@@ -71,51 +71,77 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/detailsEventDescreption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:textColor="@color/black"
-                android:hint="Event Info"
-                android:text="@{viewModel.eventDescription}"
-                android:textAlignment="center"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.076"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailsEventName" />
+                        <TextView
+                            android:id="@+id/detailsEventDescreption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="4dp"
+                            android:hint="Event Info"
+                            android:text="@{viewModel.eventDescription}"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.076"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/detailsEventName" />
 
                         <ImageView
                             android:id="@+id/btnLocation"
                             android:layout_width="43dp"
                             android:layout_height="41dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="15dp"
                             android:src="@drawable/ic_baseline_location_on_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption" />
+                            app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <ImageView
+                            android:id="@+id/btnBookmarkBorder"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="12dp"
+                            android:src="@drawable/ic_baseline_emptybookmark"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/detailsEventName"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btnBookmarkFull"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="12dp"
+                            android:src="@drawable/ic_baseline_fullbookmark"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/detailsEventName"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
+                            android:layout_marginBottom="32dp"
                             android:text="Riyadh, Saudi Arabia"
                             android:textSize="12dp"
                             android:textStyle="italic"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/btnShare"
-                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintHorizontal_bias="0.053"
                             app:layout_constraintStart_toEndOf="@+id/btnLocation" />
 
                         <ImageView
                             android:id="@+id/btnShare"
                             android:layout_width="41dp"
                             android:layout_height="36dp"
-                            android:layout_marginEnd="16dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="15dp"
                             android:src="@drawable/ic_baseline_share_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

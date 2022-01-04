@@ -29,8 +29,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventsRecycleView"
-                android:layout_width="402dp"
-                android:layout_height="694dp"
+                android:layout_width="406dp"
+                android:layout_height="690dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

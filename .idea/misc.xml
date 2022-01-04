@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/drawable/ic_baseline_emptybookmark.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/drawable/ic_baseline_fullbookmark.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/activity_home.xml" value="0.1" />
@@ -12,7 +14,7 @@
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/activity_registration.xml" value="0.1" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/activity_splash.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/event_list.xml" value="0.1" />
-        <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/events_list.xml" value="0.264" />
+        <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/events_list.xml" value="0.4" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/fragment_details.xml" value="0.4" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/fragment_home.xml" value="0.2465483234714004" />
         <entry key="..\:/Users/khulud/AndroidStudioProjects/Gathering/app/src/main/res/layout/fragment_login.xml" value="0.1" />
