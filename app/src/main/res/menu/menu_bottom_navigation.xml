@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/reminderFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_circle_notifications_24"
+        android:title="Reminder" />
+
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="home"/>
+
+    <item
+        android:id="@+id/bookMarkFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_fullbookmark"
+        android:title="Book Mark"/>
+
+    <item
+        android:id="@+id/startingFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_logout_24"
+        android:title="Sign IN"/>
+
+<!--    <item-->
+<!--        android:id="@+id/startingFragment"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_baseline_logout_24"-->
+<!--        android:title="Signout"-->
+<!--        />-->
+
+</menu>

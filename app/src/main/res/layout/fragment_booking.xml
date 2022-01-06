@@ -1,0 +1,130 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.khulud.gathering.fragmnets.BookingFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Group the order details into a single ViewGroup and set focusable = true,
+                 so all fields will be read aloud together by the accessibility service -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/quantity_label"
+                    style="Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="quantity"
+                    android:textAllCaps="true"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    style="Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{viewModel.quantity.toString()}"
+                    tools:text="6 cupcakes" />
+
+                <View
+                    android:id="@+id/divider1"
+                    style=""
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:id="@+id/flavor_label"
+                    style="Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="flavor" />
+
+                <TextView
+                    android:id="@+id/flavor"
+                    style="Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{viewModel.flavor}"
+                    tools:text="Chocolate" />
+
+                <View
+                    android:id="@+id/divider2"
+                    style=""
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:id="@+id/pickup_label"
+                    style="Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pickup_date" />
+
+                <TextView
+                    android:id="@+id/date"
+                    style="Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{viewModel.date}"
+                    tools:text="Sunday" />
+
+                <View
+                    android:id="@+id/divider3"
+                    style=""
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/price"
+                    style="Widget.Cupcake.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="16dp"
+                    android:text="@{@string/total_price(viewModel.price)}"
+                    tools:text="Total $5.00" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Booking" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="cancel" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
