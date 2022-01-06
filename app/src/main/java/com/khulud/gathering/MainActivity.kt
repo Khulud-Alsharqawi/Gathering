@@ -1,10 +1,14 @@
 package com.khulud.gathering
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.example.gathering.R
 import com.example.gathering.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
+import com.google.firebase.ktx.Firebase
 import com.khulud.gathering.adapter.EventsAdapter
 import com.khulud.gathering.fragmnets.HomeFragment
 import com.khulud.gathering.model.EventsList
@@ -33,9 +40,12 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
+//
+//        val navMenu = findViewById<NavigationView>(R.id.nav_view)
+//        navMenu.setupWithNavController(navController)
 
-        val navMenu = findViewById<NavigationView>(R.id.nav_view)
-        navMenu.setupWithNavController(navController)
+        val buttonBottomBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        buttonBottomBar.setupWithNavController(navController)
         //  setupActionBarWithNavController(navController)
         //    val topAppBar = binding.topAppBar
 
@@ -44,5 +54,6 @@ class MainActivity : AppCompatActivity() {
 //            navMenu.open
         // Handle navigation icon press
     }
+
 
 }

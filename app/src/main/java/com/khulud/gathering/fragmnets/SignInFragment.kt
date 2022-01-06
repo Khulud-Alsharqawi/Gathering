@@ -11,6 +11,8 @@ import com.example.gathering.R
 import com.example.gathering.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class SignInFragment : Fragment() {
@@ -19,6 +21,7 @@ class SignInFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        isSignIn()
 //        val loginButton = findViewById<Button>(R.id.btn_login)
 //        binding.btnSign.setOnClickListener {
 //
@@ -70,5 +73,15 @@ class SignInFragment : Fragment() {
                     println(it.message)
                 }
         }
+    }
+
+    private fun isSignIn() {
+        val currentUser = Firebase.auth.currentUser
+
+        if (currentUser != null){
+            findNavController().navigate(R.id.action_signInFragment_to_profileFragment)
+            binding?.btnLogin
+        }
+
     }
 }

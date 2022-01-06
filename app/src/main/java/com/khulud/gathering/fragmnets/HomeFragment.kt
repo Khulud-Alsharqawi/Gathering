@@ -5,14 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.example.gathering.R
-import com.google.firebase.auth.FirebaseAuth
 import com.example.gathering.databinding.FragmentHomeBinding
 import com.google.firebase.firestore.*
 import com.khulud.gathering.adapter.EventsAdapter
@@ -24,15 +18,12 @@ class HomeFragment : Fragment() {
 
     private lateinit var db: FirebaseFirestore
 
-    // lateinit var toggle:ActionBarDrawerToggle
     private val viewModel: EventsViewModel by viewModels()
     private var binding: FragmentHomeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
-//        binding.
-//        val navView:NavgationView
+
 
     }
 
@@ -49,7 +40,7 @@ class HomeFragment : Fragment() {
 
         binding?.eventsRecycleView?.setHasFixedSize(true)
 
-       binding?.viewModel=  viewModel
+        binding?.viewModel = viewModel
 
         return fragmentHomeBinding.root
 
@@ -62,12 +53,6 @@ class HomeFragment : Fragment() {
 //        val userId = intent.getStringExtra("user_id")
 //       findViewById<TextView>(R.id.userId).text = userId
 
-
-
-
-        binding?.logout?.setOnClickListener {
-            signout()
-        }
 
     }
 
@@ -98,12 +83,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    fun signout() {
-        binding?.logout?.editableText.toString()
-        FirebaseAuth.getInstance().signOut()
-        findNavController().navigate(R.id.action_homeFragment_to_startingFragment)
 
-    }
 }
 
 

@@ -35,21 +35,33 @@
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:navGraph="@navigation/nav_graph" />
+<!--        <com.google.android.material.navigation.NavigationView-->
+<!--            android:id="@+id/nav_view"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:headerLayout="@layout/nav_header"-->
+<!--            app:menu="@menu/menu_bottom_navigation"-->
+<!--            android:layout_gravity="start"-->
+<!--            android:fitsSystemWindows="true"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/bottomNavigationView"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            app:menu="@menu/menu_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        tools:ignore="MissingConstraints" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

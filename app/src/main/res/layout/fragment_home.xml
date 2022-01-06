@@ -37,19 +37,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.037"
-                app:listData="@{viewModel.event}" />
+                app:listData="@{viewModel.event}"
+                tools:listitem="@layout/events_list"/>
 
-            <Button
-                android:id="@+id/logout"
-                android:layout_width="411dp"
-                android:layout_height="41dp"
-                android:text="@string/logout"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.539"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eventsRecycleView"
-                app:layout_constraintVertical_bias="1.0" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
