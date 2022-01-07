@@ -31,6 +31,7 @@ class DetailsFragment : Fragment() {
     lateinit var eventDescription: String
     lateinit var price: String
     lateinit var argu: String
+    lateinit var date:String
 
 
     private val favDB = Firebase.firestore.collection("BookmarkEventsList")
@@ -47,6 +48,7 @@ class DetailsFragment : Fragment() {
             eventsLocation = it.getString(EVENTSLOCATION).toString()
             eventDescription = it.getString(EVENTDESCRIPTION).toString()
             price = it.getString(PRICE).toString()
+            date=it.getString(DATE).toString()
 
         }
     }
@@ -142,6 +144,7 @@ class DetailsFragment : Fragment() {
         const val EVENTSLOCATION = "eventsLocation"
         const val EVENTDESCRIPTION = "eventDescription"
         const val PRICE = "price"
+        const val DATE="eventDate"
     }
 
     fun getEventsByName(name: String) {
@@ -163,6 +166,8 @@ class DetailsFragment : Fragment() {
                                 documentSnapshot.data?.get("eventLocation").toString()
                         viewModel.price.value =
                                 documentSnapshot.data?.get("price").toString()
+                        viewModel.eventDate.value =
+                                documentSnapshot.data?.get("eventDate").toString()
 
                     }
                 } else {
@@ -194,6 +199,9 @@ class DetailsFragment : Fragment() {
 
                         viewModel.price.value =
                                 documentSnapshot.data?.get("price").toString()
+
+                        viewModel.eventDate.value =
+                                documentSnapshot.data?.get("eventDate").toString()
                     }
                 }
             })
@@ -202,7 +210,8 @@ class DetailsFragment : Fragment() {
         var description = viewModel.eventDescription.value!!
         var location = viewModel.eventsLocation.value!!
         var price = viewModel.price.value!!
-        return EventsList(image, name, description, location, true, price)
+        var date=viewModel.eventDate.value!!
+        return EventsList(image, name, description, location, true, price, date)
 
     }
 

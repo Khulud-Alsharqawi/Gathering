@@ -11,8 +11,9 @@ data class EventsList(
     val eventInfo: String = " ",
     val eventLocation: String = " ",
     val isBookMark: Boolean = false,
-    val price:String =""
-)
+    val price:String ="",
+    val eventDate :String =" "
+    )
 
 
 data class BookmarkEventsList(

@@ -20,9 +20,6 @@ class EventsViewModel : ViewModel() {
     private var _bookmarkItem = MutableLiveData<List<BookmarkEventsList>>()
     val bookmarkItem: MutableLiveData<List<BookmarkEventsList>> get() = _bookmarkItem
 
-//    private var _selected = MutableLiveData<Model>()
-//    val selected: LiveData<Model> get() = _selected
-
     private var _eventName = MutableLiveData<String>()
     val eventName: MutableLiveData<String> get() = _eventName
 
@@ -39,19 +36,21 @@ class EventsViewModel : ViewModel() {
     private var _price = MutableLiveData<String>()
     val price: MutableLiveData<String> get() = _price
 
+    private var _eventDate = MutableLiveData<String>()
+    val eventDate: MutableLiveData<String> get() = _eventDate
+
+
+
 
     init {
         getEvents()
-        //setSelectedEventsList()
     }
 
     private fun getEvents() {
         event.value = listOf()
     }
 
-//    fun setSelectedEventsList() {
-//        _selected.value = selected.value
-//    }
+
 
     companion object {
         val BookmarkEventsList = BookmarkEvents()
