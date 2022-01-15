@@ -20,65 +20,73 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/animation" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToSignIn"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
-        android:text="Sign in"
+        android:text="@string/Sign_in"
         app:cornerRadius="30dp"
+        android:background="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateClickableBoundsCheck" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToProfile"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
-        android:text="Profile"
+        android:background="@color/purple_700"
+        android:text="@string/Profile"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToReg"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
-        android:text="Registration"
+        android:text="@string/Registration"
+        android:background="@color/purple_700"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnToSignIn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnToSignIn" />
+        app:layout_constraintStart_toStartOf="@+id/btnToSignIn"
+         />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTologout"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
-        android:text="Sign Out"
+        android:background="@color/purple_700"
+        android:text="@string/Sign_out"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnToProfile"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="@+id/btnToProfile" />
 
-    <ImageView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/imageView2"
+        style="@style/TextAppearance.AppCompat.Display2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gathering"
+        android:text="@string/gathering"
+        android:textColor="@color/Blue_700"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.065" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

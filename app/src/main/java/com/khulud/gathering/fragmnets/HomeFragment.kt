@@ -21,11 +21,6 @@ class HomeFragment : Fragment() {
     private val viewModel: EventsViewModel by viewModels()
     private var binding: FragmentHomeBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,9 +45,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val userId = intent.getStringExtra("user_id")
-//       findViewById<TextView>(R.id.userId).text = userId
-
 
     }
 

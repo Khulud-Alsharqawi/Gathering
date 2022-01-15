@@ -5,6 +5,7 @@
     tools:context="com.khulud.gathering.fragmnets.DetailsFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.khulud.gathering.model.EventsViewModel" />
@@ -55,16 +56,16 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/detailsEventName"
                             android:layout_width="297dp"
                             android:layout_height="56dp"
-                            android:hint="Event Name"
+                            android:hint="@string/event_name"
                             android:text="@{viewModel.eventName}"
                             android:textColor="@color/Blue_200"
-                            android:textSize="45dp"
+                            android:textSize="45sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.172"
@@ -78,11 +79,11 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="19dp"
-                            android:hint="Event Info"
+                            android:hint="@string/event_info"
                             android:text="@{viewModel.eventDescription}"
                             android:textAlignment="center"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -91,15 +92,16 @@
 
                         <TextView
                             android:id="@+id/dateView"
-                            android:layout_width="83dp"
-                            android:layout_height="24dp"
+                            android:layout_width="100dp"
+                            android:layout_height="21dp"
                             android:layout_marginEnd="27dp"
                             android:text="@{viewModel.eventDate}"
                             android:textColor="@color/black"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/priceView"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toEndOf="@+id/imageView3"
                             app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption"
                             app:layout_constraintVertical_bias="0.692" />
@@ -108,12 +110,13 @@
                             android:id="@+id/priceView"
                             android:layout_width="76dp"
                             android:layout_height="38dp"
+                            android:layout_marginBottom="20dp"
                             android:text="@{viewModel.price}"
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.936"
+                            app:layout_constraintHorizontal_bias="0.91"
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <ImageView
@@ -155,20 +158,21 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginBottom="60dp"
-                            android:text="Riyadh, Saudi Arabia"
-                            android:textSize="12dp"
+                            android:text="@string/riyadh_saudi_arabia"
+                            android:textSize="12sp"
                             android:textStyle="italic"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/btnLocation"
-                            app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption"
-                            app:layout_constraintVertical_bias="1.0" />
+                            app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption" />
 
                         <ImageView
                             android:id="@+id/btnShare"
                             android:layout_width="41dp"
                             android:layout_height="36dp"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="20dp"
+
                             android:src="@drawable/ic_baseline_share_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -181,38 +185,27 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginTop="36dp"
-                            android:layout_marginBottom="8dp"
-                            android:text="Share"
-                            android:textSize="12dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/share"
+                            android:textSize="12sp"
                             android:textStyle="italic"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/btnShare"
-                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+                            app:layout_constraintTop_toBottomOf="@+id/textView"
+                            app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
                             android:id="@+id/imageView3"
                             android:layout_width="19dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="72dp"
+                            android:layout_height="22dp"
+                            android:layout_marginStart="60dp"
                             android:layout_marginBottom="44dp"
                             android:src="@drawable/calendar"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/dateView"
                             app:layout_constraintStart_toEndOf="@+id/textView"
                             app:layout_constraintTop_toBottomOf="@+id/detailsEventDescreption"
-                            app:layout_constraintVertical_bias="0.9" />
-
-
-                        <!--                        <Button-->
-                        <!--                            android:layout_width="150dp"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:drawableEnd="@drawable/arrow"-->
-                        <!--                            android:text="Book Now"-->
-                        <!--                            android:textIsSelectable="true"-->
-                        <!--                            app:cornerRadius="30dp"-->
-                        <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-                        <!--                            app:layout_constraintEnd_toEndOf="parent"-->
-                        <!--                            app:layout_constraintStart_toStartOf="parent" />-->
+                            app:layout_constraintVertical_bias="0.562" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -231,13 +224,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBookig"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="135dp"
+                    android:background="@color/purple_700"
                     android:drawableEnd="@drawable/arrow"
-                    android:text="Book Now"
+                    android:text="@string/book_now"
                     app:cornerRadius="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

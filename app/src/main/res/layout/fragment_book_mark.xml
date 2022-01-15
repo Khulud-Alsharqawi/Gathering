@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.khulud.gathering.fragmnets.BookMarkFragment" >
+    tools:context="com.khulud.gathering.fragmnets.BookMarkFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.khulud.gathering.model.EventsViewModel" />
+
         <variable
             name="homeFragment"
             type="com.khulud.gathering.fragmnets.BookMarkFragment" />
@@ -19,11 +20,11 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -37,20 +38,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.037"
                 app:listBookmarkData="@{viewModel.bookmarkItem}"
-                tools:listitem="@layout/events_list"/>
-
+                tools:listitem="@layout/events_list" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:headerLayout="@layout/nav_header"
-            app:menu="@menu/nav_menu"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"/>
-
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

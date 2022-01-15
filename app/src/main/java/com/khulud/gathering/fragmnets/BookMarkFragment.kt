@@ -1,11 +1,13 @@
 package com.khulud.gathering.fragmnets
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.gathering.R
 import com.example.gathering.databinding.FragmentBookMarkBinding
@@ -13,6 +15,7 @@ import com.example.gathering.databinding.FragmentHomeBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.remoteMessage
 import com.khulud.gathering.adapter.BookmarkAdapter
 import com.khulud.gathering.adapter.EventsAdapter
 import com.khulud.gathering.model.BookmarkEvents
@@ -23,14 +26,16 @@ import com.khulud.gathering.model.EventsViewModel
 class BookMarkFragment : Fragment() {
 
     private val viewModel: EventsViewModel by viewModels()
-    var binding : FragmentBookMarkBinding? = null
+    var binding: FragmentBookMarkBinding? = null
     private lateinit var db: FirebaseFirestore
-    private lateinit var userId : String
+    private lateinit var userId: String
 
 
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val fragmentBookMarkBinding = FragmentBookMarkBinding.inflate(inflater, container, false)
         binding = fragmentBookMarkBinding
@@ -40,7 +45,7 @@ class BookMarkFragment : Fragment() {
 
         binding?.eventBookmarksRecycleView?.setHasFixedSize(true)
 
-        binding?.viewModel=  viewModel
+        binding?.viewModel = viewModel
 
         return fragmentBookMarkBinding.root
 
@@ -48,16 +53,18 @@ class BookMarkFragment : Fragment() {
 
     }
 
-    private fun BookMarkEventChangeListener() : ArrayList<BookmarkEventsList> {
+    private fun BookMarkEventChangeListener(): ArrayList<BookmarkEventsList> {
 
 
         var eventsArrayList: ArrayList<BookmarkEventsList> = ArrayList()
         db = FirebaseFirestore.getInstance()
-        userId = Firebase.auth.currentUser!!.uid
-
-        db.collection("BookmarkEventsList").whereEqualTo("userUid",userId)
+      //  if (Firebase.auth.currentUser.uid {  }
+       userId = Firebase.auth.currentUser!!.uid
+        db.collection("BookmarkEventsList").whereEqualTo("userUid", userId)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?
+                @SuppressLint("NotifyDataSetChanged")
+                override fun onEvent(
+                    value: QuerySnapshot?, error: FirebaseFirestoreException?
                 ) {
                     if (error != null) {
                         Log.e("Fire Store Error: ", error.message.toString())
@@ -74,7 +81,6 @@ class BookMarkFragment : Fragment() {
             })
 
         return eventsArrayList
-
 
 
     }

@@ -61,8 +61,7 @@ class SignInFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
-                        Toast.makeText(this.requireContext(), "Logged in", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this.requireContext(), "Logged in", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
                     } else {
                         Toast.makeText(this.requireContext(), "Error", Toast.LENGTH_SHORT)

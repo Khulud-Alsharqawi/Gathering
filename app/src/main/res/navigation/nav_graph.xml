@@ -12,8 +12,8 @@
         <argument android:name="eventName"
             app:argType="string" />
         <action
-            android:id="@+id/action_detailsFragment_to_bookingFragment"
-            app:destination="@id/bookingFragment" />
+            android:id="@+id/action_detailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -23,12 +23,21 @@
         <action
             android:id="@+id/action_profileFragment_to_editeProfileFragment"
             app:destination="@id/editeProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <argument
+            android:name="userid"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_profileFragment_to_startingFragment"
+            app:destination="@id/startingFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.khulud.gathering.fragmnets.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -94,18 +103,6 @@
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bookingFragment"
-        android:name="com.khulud.gathering.fragmnets.BookingFragment"
-        android:label="fragment_booking"
-        tools:layout="@layout/fragment_booking">
-        <action
-            android:id="@+id/action_bookingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <argument
-            android:name="eventName"
-            app:argType="string" />
-    </fragment>
-    <fragment
         android:id="@+id/editeProfileFragment"
         android:name="com.khulud.gathering.fragmnets.EditeProfileFragment"
         android:label="fragment_edite_profile"
@@ -115,15 +112,7 @@
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/reminderFragment"
-        android:name="com.khulud.gathering.fragmnets.ReminderFragment"
-        android:label="fragment_reminder"
-        tools:layout="@layout/fragment_reminder" >
-        <action
-            android:id="@+id/action_reminderFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_reminderFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:id="@+id/settingsFragment"
+        android:name="com.example.testf.prefrence.UserPrefrencFragment"
+        android:label="SettingsFragment" />
 </navigation>

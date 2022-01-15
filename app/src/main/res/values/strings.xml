@@ -1,19 +1,61 @@
-<resources>
-    <string name="app_name">Gathering</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">Gathering</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="invalid_username" translatable="false">Not a valid username</string>
+    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
+    <string name="login_failed" translatable="false">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="home_page">Home page</string>
     <string name="logout">Logout</string>
     <string name="see_more">See More</string>
-    <string name="show">show</string>
+    <string name="show" translatable="false">show</string>
     <string name="more">more</string>
+    <string name="sign_in">Sign In</string>
+    <string name="home">Home</string>
+    <string name="book_mark">Book Mark</string>
+    <string name="save_change">Save Change</string>
+    <!--shared preference-->
+      <string name="edit">Edit</string>
+    <string name="dark_theme_preference_value" translatable="false">dark_theme</string>
+    <string name="light_theme_preference_value" translatable="false">Light_theme</string>
+    <string name="system_theme_preference_value" translatable="false">default</string>
+    <string name="profile">profile</string>
+    <string name="workers" translatable="false">Who In This Project</string>
+    <string name="req">Join</string>
+    <string name="requestForm" translatable="false">Make a Request</string>
+    <string name="makeReq" translatable="false">Request</string>
+    <string name="theme_preferences_key" translatable="false">preference</string>
+    <string name="dark_theme_description" translatable="false">dark</string>
+    <string name="light_theme_description" translatable="false">light</string>
+    <string name="system_theme_description" translatable="false">default</string>
+    <string name="Profile">Profile</string>
+    <string name="Registration">Registration</string>
+    <string name="Sign_out">Sign Out</string>
+    <string name="gathering" translatable="false">Gathering</string>
+    <string name="Sign_in">Sign in</string>
+    <string name="User_name">User Name</string>
+    <string name="Password">password</string>
+    <string name="signIn">SIGN IN</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="name_view" translatable="false">NAME VIEW</string>
+    <string name="bio_view" translatable="false">BIO VIEW</string>
+    <string name="update">Update</string>
+    <string name="setting">Setting</string>
+    <string name="name">Name</string>
+    <string name="bio">Bio</string>
+    <string name="event_name">Event Name</string>
+    <string name="event_info">Event Info</string>
+    <string name="share">Share</string>
+    <string name="book_now">Book Now</string>
+    <string name="riyadh_saudi_arabia">Riyadh, Saudi Arabia</string>
+    <string name="delete_account">Delete account</string>
+
 </resources>
