@@ -1,6 +1,7 @@
 package com.khulud.gathering.model
 
 import android.util.Log
+import androidx.core.view.isGone
 import androidx.lifecycle.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
@@ -32,16 +33,11 @@ class ProfileViewModel : ViewModel() {
     private var _proImage = MutableStateFlow<String>("")
     val proImage: LiveData<String> get() = _proImage.asLiveData()
 
-    val userId = currentUserID()
 
     init {
-//        getEvents()
         getProfilrByUserId()
     }
 
-    private fun getEvents() {
-        profile.value = listOf()
-    }
 
     fun currentUserID(): String {
         return Firebase.auth.currentUser!!.uid
@@ -78,6 +74,7 @@ class ProfileViewModel : ViewModel() {
                 .delete()
                 .addOnSuccessListener {
                     Log.e("TAG", "save: true")
+
                 }
                 .addOnFailureListener { e ->
                     Log.e("TAG", "save: error $e")

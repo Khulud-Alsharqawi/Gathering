@@ -2,6 +2,8 @@ package com.khulud.gathering
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         val buttonBottomBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         buttonBottomBar.setupWithNavController(navController)
+
+
+
 
     }
 

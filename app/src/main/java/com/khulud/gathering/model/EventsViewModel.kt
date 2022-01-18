@@ -26,8 +26,8 @@ class EventsViewModel : ViewModel() {
     private var _event = MutableLiveData<List<EventsList>>()
     val event: MutableLiveData<List<EventsList>> get() = _event
 
-    private var _bookmarkItem = MutableLiveData<List<BookmarkEventsList>>()
-    val bookmarkItem: MutableLiveData<List<BookmarkEventsList>> get() = _bookmarkItem
+    private var _bookmarkItem = MutableLiveData<List<EventsList>>()
+    val bookmarkItem: MutableLiveData<List<EventsList>> get() = _bookmarkItem
 
     private var _eventName = MutableLiveData<String>()
     val eventName: MutableLiveData<String> get() = _eventName
@@ -108,12 +108,6 @@ class EventsViewModel : ViewModel() {
     // endregion
     !*--------------------------------------
  */
-
-    fun reImg  (s : String) : String{
-
-
-        return s
-    }
 
 }
 

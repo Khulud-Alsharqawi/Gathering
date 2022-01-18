@@ -10,18 +10,12 @@ data class EventsList(
     val eventDate: String = " "
 )
 
-
-data class BookmarkEventsList(
-    val userUid: String = "",
-    val eventsList: EventsList = EventsList()
-)
-
-
 data class Profiles(
     val userid: String = "",
     val username: String = "",
     val bio: String = "",
-    val imageUrl: String = ""
+    val imageUrl: String = "",
+    val bookMarks: MutableList<EventsList> = mutableListOf()
 )
 
 

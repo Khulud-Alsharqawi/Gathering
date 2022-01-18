@@ -113,7 +113,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="92dp"
             android:layout_marginTop="12dp"
-            android:background="@color/purple_700"
+            android:background="#21083b"
             android:text="@string/update"
             app:cornerRadius="30dp"
             app:layout_constraintBottom_toBottomOf="parent"

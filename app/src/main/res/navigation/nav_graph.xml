@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_bookMarkFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_bookMarkFragment_to_startingFragment"
+            app:destination="@id/startingFragment" />
     </fragment>
     <fragment
         android:id="@+id/editeProfileFragment"

@@ -37,7 +37,7 @@ class ProfileFragment : Fragment() {
     lateinit var argu: String
     private var binding: FragmentProfileBinding? = null
     private val viewModel: ProfileViewModel by viewModels()
-    //val s = "https://firebasestorage.googleapis.com/v0/b/gathering-c4a13.appspot.com/o/UserProfileImage%2F2a677fb1-e589-48b3-981c-07d637d8af37?alt=media&token=0c5bc3dc-77e8-4db5-afea-ec9227c27787"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments.let {
@@ -85,25 +85,30 @@ class ProfileFragment : Fragment() {
         binding!!.deleteBtn.setOnClickListener {
 
             delete()
-           findNavController().navigate(R.id.action_profileFragment_to_startingFragment)
+
 
         }
     }
 
-    fun delete(){
+    private fun delete() {
         ProfileViewModel.DeleteFirebase().delete()
         removeUser()
 
 
     }
 
-    fun removeUser(){
+    private fun removeUser() {
         val user = Firebase.auth.currentUser!!
 
         user.delete()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "User account deleted.")
+
+                    FirebaseAuth.getInstance().signOut()
+
+                    findNavController().navigate(R.id.action_profileFragment_to_startingFragment)
+
                 }
             }
 
@@ -123,30 +128,22 @@ class ProfileFragment : Fragment() {
         viewModel.bio.observe(viewLifecycleOwner, { binding!!.bioOutput.setText(it) })
 
         lifecycleScope.launch {
-        repeatOnLifecycle(Lifecycle.State.RESUMED) {
-            viewModel.proImage.observe(viewLifecycleOwner,{
-                it.let {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.proImage.observe(viewLifecycleOwner, {
+                    it.let {
 //                binding!!.uploadGalaryPic.setImageURI(it.toUri())}
-                    Glide.with(this@ProfileFragment.requireContext())
-                        .load(it).placeholder(R.drawable.loading_animation).into(binding!!.uploadGalaryPic)}
-            })
-            Log.d(TAG, "displayInfo() called with: userid = $userid")
-        }
+                        Glide.with(this@ProfileFragment.requireContext())
+                            .load(it)
+                            .placeholder(R.drawable.ic_baseline_person_24)
+
+                            .into(binding!!.uploadGalaryPic)
+                    }
+                })
+                Log.d(TAG, "displayInfo() called with: userid = $userid")
+            }
         }
     }
 //endregion
-
-
-//    private fun setImage (image : String) : Uri?{
-//        val imgUri = image.toUri().buildUpon().build()
-//        Glide.with(binding!!.uploadGalaryPic)
-//            .load(imgUri)
-//            .placeholder(R.drawable.loading_animation)
-//            .into(binding!!.uploadGalaryPic)
-//
-//        return imgUri
-//    }
-
 }
 
 

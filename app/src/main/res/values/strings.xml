@@ -56,6 +56,6 @@
     <string name="share">Share</string>
     <string name="book_now">Book Now</string>
     <string name="riyadh_saudi_arabia">Riyadh, Saudi Arabia</string>
-    <string name="delete_account">Delete account</string>
+    <string name="delete_account" translatable="false">Delete account</string>
 
 </resources>

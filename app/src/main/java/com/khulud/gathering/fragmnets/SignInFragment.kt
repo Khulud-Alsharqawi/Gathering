@@ -22,13 +22,7 @@ class SignInFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         isSignIn()
-//        val loginButton = findViewById<Button>(R.id.btn_login)
-//        binding.btnSign.setOnClickListener {
-//
-//        }
-//        loginButton.setOnClickListener {
-//            loginUser()
-//        }
+
 
     }
 

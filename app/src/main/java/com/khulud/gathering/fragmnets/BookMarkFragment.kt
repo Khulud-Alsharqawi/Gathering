@@ -9,28 +9,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.gathering.R
 import com.example.gathering.databinding.FragmentBookMarkBinding
-import com.example.gathering.databinding.FragmentHomeBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.remoteMessage
 import com.khulud.gathering.adapter.BookmarkAdapter
-import com.khulud.gathering.adapter.EventsAdapter
-import com.khulud.gathering.model.BookmarkEvents
-import com.khulud.gathering.model.BookmarkEventsList
-import com.khulud.gathering.model.EventsList
-import com.khulud.gathering.model.EventsViewModel
+import com.khulud.gathering.model.*
 
 class BookMarkFragment : Fragment() {
 
     private val viewModel: EventsViewModel by viewModels()
     var binding: FragmentBookMarkBinding? = null
-    private lateinit var db: FirebaseFirestore
-    private lateinit var userId: String
+    private var db = FirebaseFirestore.getInstance()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        if (!isSignIn()) {
+            findNavController().navigate(R.id.action_bookMarkFragment_to_startingFragment)
+            Toast.makeText(this.requireContext(), "You Should Be Login First", Toast.LENGTH_SHORT).show()
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,14 +54,13 @@ class BookMarkFragment : Fragment() {
 
     }
 
-    private fun BookMarkEventChangeListener(): ArrayList<BookmarkEventsList> {
+    private fun BookMarkEventChangeListener(): ArrayList<EventsList> {
 
+        val currentUserId = Firebase.auth.currentUser?.uid
 
-        var eventsArrayList: ArrayList<BookmarkEventsList> = ArrayList()
-        db = FirebaseFirestore.getInstance()
-      //  if (Firebase.auth.currentUser.uid {  }
-       userId = Firebase.auth.currentUser!!.uid
-        db.collection("BookmarkEventsList").whereEqualTo("userUid", userId)
+        var eventsArrayList: ArrayList<EventsList> = ArrayList()
+
+        db.collection("profiles").whereEqualTo("userUid", currentUserId)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onEvent(
@@ -69,12 +69,12 @@ class BookMarkFragment : Fragment() {
                     if (error != null) {
                         Log.e("Fire Store Error: ", error.message.toString())
                         return
-                    }
-                    for (dc: DocumentChange in value?.documentChanges!!) {
-                        if (dc.type == DocumentChange.Type.ADDED) {
-                            eventsArrayList.add(dc.document.toObject(BookmarkEventsList::class.java))
+                    } else
+                        for (dc: DocumentChange in value?.documentChanges!!) {
+                            if (dc.type == DocumentChange.Type.ADDED) {
+                                eventsArrayList.add(dc.document.toObject(EventsList::class.java))
+                            }
                         }
-                    }
                     binding?.eventBookmarksRecycleView?.adapter?.notifyDataSetChanged()
                 }
 
@@ -83,6 +83,15 @@ class BookMarkFragment : Fragment() {
         return eventsArrayList
 
 
+    }
+
+    private  fun isSignIn() : Boolean {
+        val currentUser = Firebase.auth.currentUser
+
+        if (currentUser != null)
+            return true
+        else
+            return false
     }
 
 }

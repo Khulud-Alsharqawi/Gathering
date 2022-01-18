@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.gathering.R
 import com.khulud.gathering.fragmnets.BookMarkFragmentDirections
-import com.khulud.gathering.model.BookmarkEventsList
+import com.khulud.gathering.model.EventsList
 
-class BookmarkAdapter(private val bookmarkEveList: ArrayList<BookmarkEventsList>) :
+class BookmarkAdapter(private val bookmarkEveList: ArrayList<EventsList>) :
     RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,16 +37,17 @@ class BookmarkAdapter(private val bookmarkEveList: ArrayList<BookmarkEventsList>
     override fun onBindViewHolder(holder: BookmarkAdapter.ViewHolder, position: Int) {
         val item = bookmarkEveList[position]
 
-        val images = item.eventsList.eventImage
+        val images = item.eventImage
         val imgUri = images.toUri().buildUpon().build()
         Glide.with(holder.imageView)
             .load(imgUri)
             .into(holder.imageView)
-        holder.textView.text = item.eventsList.eventName
+        holder.textView.text = item.eventName
         holder.btnDetails.setOnClickListener {
 
-
-            val action =BookMarkFragmentDirections.actionBookMarkFragmentToDetailsFragment(item.eventsList.eventName ?: "")
+            val action = BookMarkFragmentDirections.actionBookMarkFragmentToDetailsFragment(
+                item.eventName ?: ""
+            )
             holder.itemView.findNavController().navigate(action)
 
 

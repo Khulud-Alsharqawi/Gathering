@@ -4,23 +4,19 @@ package com.khulud.gathering.fragmnets
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.example.gathering.R
 import com.example.gathering.databinding.FragmentEditeProfileBinding
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -28,9 +24,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.khulud.gathering.model.ProfileViewModel
 import com.khulud.gathering.model.Profiles
-import com.khulud.gathering.utility.ui.bindImage
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -44,7 +38,7 @@ class EditeProfileFragment : Fragment() {
     private var binding: FragmentEditeProfileBinding? = null
     private val viewModel: ProfileViewModel by viewModels()
 
-    private var imageUri: Uri? = null
+    private var imageUri: Uri ?= null
     private var storageReference: StorageReference = FirebaseStorage.getInstance().reference
     private val profilesCollection = Firebase.firestore.collection("profiles")
 
@@ -53,7 +47,7 @@ class EditeProfileFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEditeProfileBinding.inflate(inflater, container, false)
 //        storageReference = FirebaseStorage.getInstance().reference
         return binding!!.root
@@ -67,14 +61,19 @@ class EditeProfileFragment : Fragment() {
         binding!!.saveBtn.setOnClickListener {
             val profile = getProfileInfo()
             val checkInfo = checkInfo(profile)
-            if (checkInfo) {
-                saveProfileInfo(profile)
-                lifecycleScope.launch {
-                    uploadImage()
-                }
+
+           if(imageUri != null){
+
+               if (checkInfo) {
+                   saveProfileInfo(profile)
 
 
-            }
+                   lifecycleScope.launch {
+                       uploadImage()
+                   }
+               }
+           }
+            saveProfileInfo(profile)
 
         }
 
@@ -82,25 +81,19 @@ class EditeProfileFragment : Fragment() {
             pickImagesIntint()
         }
 
-//        binding!!.saveImage.setOnClickListener {
-//
-//
-//            uploadImage()
-//
-//        }
 
 
     }
 /*!* ------------------------------------------------------------ */
     // region upload image to firebase
 
-    suspend private fun uploadImage() {
+    private suspend fun uploadImage() {
         Log.e("TAG", "uploadImage: $imageUri")
 //        if (imageUri != null) {
-        val ref = storageReference?.child("UserProfileImage/" + UUID.randomUUID().toString())
-        val uploadTask = ref?.putFile(imageUri!!)
+        val ref = storageReference.child("UserProfileImage/" + UUID.randomUUID().toString())
+        val uploadTask = ref.putFile(imageUri!!)
         withContext(Dispatchers.IO) {
-            val urlTask = uploadTask?.continueWithTask(
+            uploadTask.continueWithTask(
                 Continuation<UploadTask.TaskSnapshot, Task<Uri>>
                 { task ->
                     if (!task.isSuccessful) {
@@ -109,11 +102,11 @@ class EditeProfileFragment : Fragment() {
                         }
                     }
                     return@Continuation ref.downloadUrl
-                })?.addOnCompleteListener { task ->
+                }).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val downloadUri = task.result
                     addUploadRecordToDb(downloadUri.toString())
-//                getProfileInfo(downloadUri.toString())
+    //                getProfileInfo(downloadUri.toString())
 
                 } else {
                     //  android:src="@drawable/ic_baseline_person_24"
@@ -134,12 +127,12 @@ class EditeProfileFragment : Fragment() {
         val data = mapOf("imageUrl" to uri)
 
         profilesCollection.document(userId).update(data)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener {
                 Toast.makeText(this.requireContext(), "Saved to DB $userId", Toast.LENGTH_LONG)
                     .show()
 
             }
-            .addOnFailureListener { e ->
+            .addOnFailureListener {
                 Toast.makeText(this.requireContext(), "Error saving to DB", Toast.LENGTH_LONG)
                     .show()
             }
@@ -219,7 +212,7 @@ class EditeProfileFragment : Fragment() {
         Log.e("TAG", "onActivityResult: $requestCode == 456")
         if (requestCode == 456) {
 
-            imageUri = data?.data
+            imageUri = data?.data!!
             Log.e("TAG", "onActivityResult:imageUri $imageUri")
             binding?.profilePic?.setImageURI(imageUri)
             try {

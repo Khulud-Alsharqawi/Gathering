@@ -1,33 +1,31 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.khulud.gathering.fragmnets.StartingFragment">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="292dp"
-        android:layout_height="260dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="412dp"
+        android:layout_height="249dp"
+        android:fitsSystemWindows="true"
+        android:background="@color/purple_700"
+        android:paddingBottom="2dp"
+        android:src="@drawable/mainpageimage"
+        app:layout_constraintCircleRadius="55dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.346"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/animation" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToSignIn"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
+        app:backgroundTint="@color/purple_700"
         android:text="@string/Sign_in"
         app:cornerRadius="30dp"
-        android:background="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -39,7 +37,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
-        android:background="@color/purple_700"
+        app:backgroundTint="@color/purple_700"
         android:text="@string/Profile"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,20 +50,19 @@
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
         android:text="@string/Registration"
-        android:background="@color/purple_700"
         app:cornerRadius="30dp"
+        app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnToSignIn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnToSignIn"
-         />
+        app:layout_constraintStart_toStartOf="@+id/btnToSignIn" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTologout"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
-        android:background="@color/purple_700"
+        app:backgroundTint="@color/purple_700"
         android:text="@string/Sign_out"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,20 +70,7 @@
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="@+id/btnToProfile" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/imageView2"
-        style="@style/TextAppearance.AppCompat.Display2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/gathering"
-        android:textColor="@color/Blue_700"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

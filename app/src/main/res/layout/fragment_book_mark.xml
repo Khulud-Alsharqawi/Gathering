@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.khulud.gathering.fragmnets.BookMarkFragment">
+    tools:context="com.khulud.gathering.fragmnets.BookMarkFragment"
+    android:background="@color/purple_200"
+    >
 
     <data>
 
@@ -29,15 +31,15 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventBookmarksRecycleView"
-                android:layout_width="406dp"
-                android:layout_height="690dp"
+                android:layout_width="409dp"
+                android:layout_height="597dp"
+                app:EventsList="@{viewModel.bookmarkItem}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.037"
-                app:listBookmarkData="@{viewModel.bookmarkItem}"
                 tools:listitem="@layout/events_list" />
 
 

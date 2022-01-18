@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFEEF"
     tools:context="com.khulud.gathering.splashActivity">
 
     <ImageView
+        android:id="@+id/Splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/splash22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/splashscrean"
+        app:lottie_loop="true"
+        android:layout_alignParentBottom="true"
+         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

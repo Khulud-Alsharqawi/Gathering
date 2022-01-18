@@ -4,13 +4,11 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.system.Os.remove
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
@@ -19,9 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.gathering.R
 import com.example.gathering.databinding.FragmentDetailsBinding
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FieldValue.delete
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -39,7 +35,7 @@ class DetailsFragment : Fragment() {
     lateinit var argu: String
     lateinit var date: String
 
-    private val favDB = Firebase.firestore.collection("BookmarkEventsList")
+    private val favDB = Firebase.firestore.collection("profiles")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,10 +54,12 @@ class DetailsFragment : Fragment() {
         /**
         ? * check the states of the bookmark tag ------------------------------------------------
          **/
-        binding?.btnBookmarkFull?.isVisible = checkBookmarkItem(eventName) == true
+
         if (checkBookmarkItem(eventName)) {
+            Log.e("TAGTAG", "onCreate: in if ${checkBookmarkItem(eventName)} ")
             binding?.btnBookmarkFull?.setImageResource(R.drawable.ic_baseline_fullbookmark)
         } else {
+            Log.e("TAGTAG", "onCreate: in if sele ${checkBookmarkItem(eventName)} ")
             binding?.btnBookmarkBorder?.setImageResource(R.drawable.ic_baseline_emptybookmark)
         }
 
@@ -118,7 +116,16 @@ class DetailsFragment : Fragment() {
         //  region book mark button
         binding?.btnBookmarkBorder?.setOnClickListener {
             binding?.btnBookmarkFull?.isVisible = true
-            isBookmark()
+            val bookMark = EventsList(
+                eventImage = viewModel.imageUrl.value!!,
+                eventName = viewModel.eventName.value!!,
+                eventInfo = viewModel.eventDescription.value !!,
+                eventLocation= viewModel.eventsLocation.value!!,
+                price= viewModel.price.value!!,
+                eventDate= viewModel.eventDate.value!!
+
+            )
+            addToBookmarkList(bookMark)
         }
         //endregion
         //region bookmark full button
@@ -132,21 +139,21 @@ class DetailsFragment : Fragment() {
             val dialogBuilder = AlertDialog.Builder(this.requireContext())
 
             // set message of alert dialog
-            val negativeButton =
-                    dialogBuilder.setMessage("Do you want to book to attend this event?")
-                        // if the dialog is cancelable
-                        .setCancelable(false)
-                        // positive button text and action
-                        .setPositiveButton(
-                            "Proceed",
-                            DialogInterface.OnClickListener { dialog, id ->
-                                findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
 
-                            })
-                        // negative button text and action
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                            dialog.cancel()
-                        })
+            dialogBuilder.setMessage("Do you want to book to attend this event?")
+                // if the dialog is cancelable
+                .setCancelable(false)
+                // positive button text and action
+                .setPositiveButton(
+                    "Proceed",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
+
+                    })
+                // negative button text and action
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                    dialog.cancel()
+                })
 
             // create dialog box
             val alert = dialogBuilder.create()
@@ -162,11 +169,6 @@ class DetailsFragment : Fragment() {
     ! function that delete the doc id
     */
     private fun deletBookedItem() {
-/*!---------------------------------------------------------------------------*/
-        if (checkBookmarkItem(eventName) == true) {
-             favDB.document().delete()
-
-        }
 
 
     }
@@ -285,79 +287,62 @@ class DetailsFragment : Fragment() {
 
     //endregion
     //region addToBookmarkList
-    private fun addToBookmarkList(bookmarkEventItem: BookmarkEventsList) {
+    private fun addToBookmarkList(bookMark: EventsList) {
 
-        favDB.add(bookmarkEventItem)
+        favDB.document(getUserId())
+            .get()
             .addOnCompleteListener { task ->
-                if (task.isSuccessful)
-                    Toast.makeText(this.requireContext(), "Bookmark", Toast.LENGTH_SHORT).show()
-                else
+                if (task.isSuccessful) {
+
+                    // bring the profile "data class" to deal with the object and add the
+                    val user = task.result.toObject(Profiles::class.java)
+
+                    user?.bookMarks?.add(bookMark)
+                    favDB.document(getUserId()).update("bookMarks", user?.bookMarks)
+                    Toast.makeText(this.requireContext(), "${user!!.username}", Toast.LENGTH_SHORT)
+                        .show()
+                } else
                     Toast.makeText(this.requireContext(), "ERROR", Toast.LENGTH_SHORT).show()
             }
 
 
     }
+
+
     //endregion
     //region getbookmark item
 
-    private fun getBookmarkItem(userId: String, eventItem: EventsList): BookmarkEventsList {
-        return BookmarkEventsList(userId, eventItem)
+    private fun getBookmarkItem(userId: String): Profiles {
+        return Profiles(userId)
     }
 
-    //endregion
-    //region is booked mark
-    private fun isBookmark() {
-        var id = getUserId()
-        var eventsList = getEventsByNameT(argu)
-        var isBookMarked = checkBookmarkItem(argu)
-        var bookmarkEventItem = getBookmarkItem(id, eventsList)
-        if (isBookMarked == true) {
-            /*! delete */
-            Toast.makeText(this.requireContext(), "Item is booked already", Toast.LENGTH_SHORT).show()
-            deletBookedItem()
-        } else {
-            addToBookmarkList(bookmarkEventItem)
-        }
-    }
 
     //endregion
     //region check booked mark item
     fun checkBookmarkItem(name: String): Boolean {
-        var isFav = false
-        //  var nameList = mutableListOf<String>()
+
+        var nameList = mutableListOf<String>()
+
         favDB.whereEqualTo("eventName", name)
             .get()
             .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
                 if (task.isSuccessful) {
                     for (documentSnapshot in task.result.documents) {
-                        /* nameList.add(documentSnapshot.data?.get("eventName").toString())
-//                        Log.e(
-//                            "TAG",
-//                            "checkBookmarkItem: ${
-//                                documentSnapshot.data?.get("eventName").toString()
-//                            } ",
-//                        )
-//                        Log.d(" Massege", "checkBookmarkItem() called with: task = $task") */
-                        if (documentSnapshot.data?.get("userUid").toString() == getUserId()) {
-                            if (documentSnapshot.data?.get("eventName").toString() == name) {
-                                Log.d(
-                                    " Massege",
-                                    "checkBookmarkItem() called with: task = ${
-                                        documentSnapshot.data?.get("eventName").toString()
-                                    }"
-                                )
-                                isFav = true
-                            }
-
-                        }
+                        nameList.add(documentSnapshot.data?.get("eventName").toString())
+                        Log.e(
+                            "TAG",
+                            "checkBookmarkItem: ${
+                                documentSnapshot.data?.get("eventName").toString()
+                            } ",
+                        )
+                        Log.d(" Massege", "checkBookmarkItem() called with: task = $task")
                     }
-                } else {
-
                 }
             })
 
-        return isFav
+        return true
     }
+
     //endregion
 
 }
