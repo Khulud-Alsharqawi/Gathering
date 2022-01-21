@@ -15,21 +15,13 @@ fun ImageView.bindImage(imageUrl: String?){
    var image= imageUrl?.toUri()?.buildUpon()?.build()
     Glide.with(this)
         .load(image)
-        .placeholder(R.drawable.loading_animation)
+        .placeholder(R.drawable.ic_baseline_person_24)
         .into(this)
-       // this.bindImage(imageUrl = imageUrl)
     }
 
 
 @BindingAdapter("listData")
 fun RecyclerView.bindRecyclerView(data: List<EventsList>?) {
     val adapter = this.adapter as EventsAdapter
-    setOf(adapter)
-}
-
-@JvmName("bindRecyclerView1")
-@BindingAdapter("EventsList")
-fun bindRecyclerView(RecyclerView:RecyclerView,data: List<EventsList>?) {
-    val adapter = RecyclerView.adapter as BookmarkAdapter
     setOf(adapter)
 }

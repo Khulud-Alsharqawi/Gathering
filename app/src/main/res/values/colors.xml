@@ -15,5 +15,8 @@
     <color name="freshyello">#ffde03</color>
     <color name="babyyallow">#FFE082</color>
     <color name="loudblue">#0336ff</color>
-    <color name="loudPink">#ff0266</color>
+    <color name="loudPink">#C3FF0266</color>
+
+
+    <color name="ic_launcher_background">#FFDE03</color>
 </resources>

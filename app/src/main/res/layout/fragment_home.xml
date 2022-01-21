@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/purple_200"
     tools:context="com.khulud.gathering.fragmnets.HomeFragment">
 
     <data>
@@ -30,8 +29,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventsRecycleView"
-                android:layout_width="409dp"
-                android:layout_height="594dp"
+                android:layout_width="411dp"
+                android:layout_height="682dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

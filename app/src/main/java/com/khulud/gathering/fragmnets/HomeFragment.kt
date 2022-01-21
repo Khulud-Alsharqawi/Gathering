@@ -1,5 +1,6 @@
 package com.khulud.gathering.fragmnets
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,7 +27,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         binding = fragmentHomeBinding
         binding?.lifecycleOwner = this
@@ -43,16 +44,12 @@ class HomeFragment : Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
     private fun EventChangeListener(): ArrayList<EventsList> {
-        var eventsArrayList: ArrayList<EventsList> = ArrayList()
+        val eventsArrayList: ArrayList<EventsList> = ArrayList()
         db = FirebaseFirestore.getInstance()
         db.collection("Events-DB").orderBy("eventName", Query.Direction.ASCENDING)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                @SuppressLint("NotifyDataSetChanged")
                 override fun onEvent(
                     value: QuerySnapshot?,
                     error: FirebaseFirestoreException?

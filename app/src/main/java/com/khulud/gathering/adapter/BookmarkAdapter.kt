@@ -14,7 +14,7 @@ import com.example.gathering.R
 import com.khulud.gathering.fragmnets.BookMarkFragmentDirections
 import com.khulud.gathering.model.EventsList
 
-class BookmarkAdapter(private val bookmarkEveList: ArrayList<EventsList>) :
+class BookmarkAdapter(private val bookmarkEveList: List<EventsList>) :
     RecyclerView.Adapter<BookmarkAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,7 +25,7 @@ class BookmarkAdapter(private val bookmarkEveList: ArrayList<EventsList>) :
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.events_list,
             parent, false
@@ -34,7 +34,7 @@ class BookmarkAdapter(private val bookmarkEveList: ArrayList<EventsList>) :
 
     }
 
-    override fun onBindViewHolder(holder: BookmarkAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = bookmarkEveList[position]
 
         val images = item.eventImage
@@ -46,7 +46,7 @@ class BookmarkAdapter(private val bookmarkEveList: ArrayList<EventsList>) :
         holder.btnDetails.setOnClickListener {
 
             val action = BookMarkFragmentDirections.actionBookMarkFragmentToDetailsFragment(
-                item.eventName ?: ""
+                item.eventName
             )
             holder.itemView.findNavController().navigate(action)
 
@@ -55,5 +55,6 @@ class BookmarkAdapter(private val bookmarkEveList: ArrayList<EventsList>) :
     }
 
     override fun getItemCount(): Int = bookmarkEveList.size
+
 }
 

@@ -35,7 +35,7 @@ class MyFirebaseMessagingService  : FirebaseMessagingService() {
         var builder: NotificationCompat.Builder = NotificationCompat.Builder(
             applicationContext, channelId
         )
-            .setSmallIcon(R.drawable.logo)
+            .setSmallIcon(R.drawable.icon)
             .setAutoCancel(true)
             .setVibrate(longArrayOf(1000, 1000, 1000))
             .setOnlyAlertOnce(true)
@@ -63,7 +63,7 @@ class MyFirebaseMessagingService  : FirebaseMessagingService() {
         val remoteview = RemoteViews("com.khulud.gathering", R.layout.notification)
         remoteview.setTextViewText(R.id.title, title)
         remoteview.setTextViewText(R.id.body, body)
-        remoteview.setImageViewResource(R.id.app_logo, R.drawable.logo)
+        remoteview.setImageViewResource(R.id.icon, R.drawable.icon)
         return remoteview
     }
 

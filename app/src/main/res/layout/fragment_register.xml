@@ -1,10 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
     tools:context="com.khulud.gathering.fragmnets.RegisterFragment">
 
 
@@ -22,14 +20,21 @@
         tools:ignore="MissingConstraints">
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="391dp"
-        android:layout_height="195dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/splashscrean"
-        tools:layout_editor_absoluteX="-4dp"
-        tools:layout_editor_absoluteY="-14dp" />
-
+        <TextView
+            android:id="@+id/topTextView"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:shadowColor="@color/freshyello"
+            android:shadowDx="4"
+            android:shadowDy="10"
+            android:shadowRadius="1"
+            android:text="Gathering"
+            android:textColor="@color/loudblue"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="-4dp"
+            tools:layout_editor_absoluteY="-14dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email"
@@ -79,7 +84,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="132dp"
                 android:layout_marginEnd="117dp"
-                app:backgroundTint="@color/purple_700"
                 android:drawableEnd="@drawable/arrow"
                 android:text="@string/sign_up"
                 android:textIsSelectable="true"

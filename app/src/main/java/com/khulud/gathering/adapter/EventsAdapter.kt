@@ -1,6 +1,5 @@
 package com.khulud.gathering.adapter
 
-import android.telecom.Call
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +25,7 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) :
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.events_list,
             parent, false
@@ -35,7 +34,7 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) :
 
     }
 
-    override fun onBindViewHolder(holder: EventsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = EveList[position]
 
         val images = item.eventImage
@@ -47,12 +46,9 @@ class EventsAdapter(private val EveList: ArrayList<EventsList>) :
         holder.textView
         holder.btnDetails.setOnClickListener {
 
-
             val actionDetails =
-                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName ?: "")
+                    HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.eventName)
             holder.itemView.findNavController().navigate(actionDetails)
-
-
         }
 
     }

@@ -5,16 +5,25 @@
     android:layout_height="match_parent"
     tools:context="com.khulud.gathering.fragmnets.StartingFragment">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
-        android:layout_width="412dp"
-        android:layout_height="249dp"
+
+    <TextView
+        android:id="@+id/topTextView"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:adjustViewBounds="true"
         android:fitsSystemWindows="true"
-        android:background="@color/purple_700"
         android:paddingBottom="2dp"
-        android:src="@drawable/mainpageimage"
-        app:layout_constraintCircleRadius="55dp"
+        android:shadowColor="@color/freshyello"
+        android:shadowDx="4"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="Gathering"
+        android:textColor="@color/loudblue"
+        android:textSize="42sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,9 +32,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
-        app:backgroundTint="@color/purple_700"
         android:text="@string/Sign_in"
-        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -37,9 +44,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
-        app:backgroundTint="@color/purple_700"
         android:text="@string/Profile"
-        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -50,8 +55,6 @@
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
         android:text="@string/Registration"
-        app:cornerRadius="30dp"
-        app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnToSignIn"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,15 +65,11 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
-        app:backgroundTint="@color/purple_700"
         android:text="@string/Sign_out"
-        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnToProfile"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="@+id/btnToProfile" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,13 +17,13 @@ import com.example.gathering.R
 import com.example.gathering.databinding.FragmentEditeProfileBinding
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
-import com.khulud.gathering.model.ProfileViewModel
-import com.khulud.gathering.model.Profiles
+import com.khulud.gathering.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -38,7 +38,7 @@ class EditeProfileFragment : Fragment() {
     private var binding: FragmentEditeProfileBinding? = null
     private val viewModel: ProfileViewModel by viewModels()
 
-    private var imageUri: Uri ?= null
+    private var imageUri: Uri? = null
     private var storageReference: StorageReference = FirebaseStorage.getInstance().reference
     private val profilesCollection = Firebase.firestore.collection("profiles")
 
@@ -49,7 +49,6 @@ class EditeProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditeProfileBinding.inflate(inflater, container, false)
-//        storageReference = FirebaseStorage.getInstance().reference
         return binding!!.root
     }
 
@@ -62,18 +61,18 @@ class EditeProfileFragment : Fragment() {
             val profile = getProfileInfo()
             val checkInfo = checkInfo(profile)
 
-           if(imageUri != null){
 
-               if (checkInfo) {
-                   saveProfileInfo(profile)
+            if (checkInfo) {
+                saveProfileInfo(profile)
 
+                if (imageUri != null) {
+                    lifecycleScope.launch {
+                        uploadImage()
+                    }
+                }
 
-                   lifecycleScope.launch {
-                       uploadImage()
-                   }
-               }
-           }
-            saveProfileInfo(profile)
+            }
+
 
         }
 
@@ -82,14 +81,11 @@ class EditeProfileFragment : Fragment() {
         }
 
 
-
     }
-/*!* ------------------------------------------------------------ */
     // region upload image to firebase
 
     private suspend fun uploadImage() {
         Log.e("TAG", "uploadImage: $imageUri")
-//        if (imageUri != null) {
         val ref = storageReference.child("UserProfileImage/" + UUID.randomUUID().toString())
         val uploadTask = ref.putFile(imageUri!!)
         withContext(Dispatchers.IO) {
@@ -106,10 +102,7 @@ class EditeProfileFragment : Fragment() {
                 if (task.isSuccessful) {
                     val downloadUri = task.result
                     addUploadRecordToDb(downloadUri.toString())
-    //                getProfileInfo(downloadUri.toString())
-
                 } else {
-                    //  android:src="@drawable/ic_baseline_person_24"
                     binding!!.profilePic.setImageResource(R.drawable.ic_baseline_person_24)
                 }
             }
@@ -118,7 +111,6 @@ class EditeProfileFragment : Fragment() {
 
     }
     // endregion
-
 
     // region add photo to DB
     private fun addUploadRecordToDb(uri: String) {
@@ -145,17 +137,24 @@ class EditeProfileFragment : Fragment() {
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Select Image(s)"), 456)
-
-
     }
     // endregion
 
     // region save Profile Info
     private fun saveProfileInfo(profile: Profiles) {
-        Firebase.firestore.collection("profiles").document(profile.userid).set(profile)
+        val profileData = mapOf(
+            "userid" to profile.userid,
+            "bio" to profile.bio,
+            "username" to profile.username
+        )
+        Firebase.firestore.collection("profiles").document(profile.userid).set(profileData,
+            SetOptions.merge())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+
+                    Log.e("TAG", "saveProfileInfo: ${profile.imageUrl}")
                     Toast.makeText(this.context, "Save", Toast.LENGTH_LONG).show()
+
                     findNavController().navigate(R.id.action_editeProfileFragment_to_profileFragment)
                 } else {
                     Toast.makeText(this.context, "Try again", Toast.LENGTH_LONG).show()
@@ -171,6 +170,8 @@ class EditeProfileFragment : Fragment() {
         val userId = viewModel.currentUserID()
         val username = binding!!.usernameInput.text.toString()
         val bio = binding!!.bioInput.text.toString()
+
+
 
         return Profiles(userId, username, bio)
     }
@@ -201,7 +202,6 @@ class EditeProfileFragment : Fragment() {
         viewModel.bio.observe(viewLifecycleOwner, { binding!!.bioInput.setText(it) })
 
 // add pic visibility
-
     }
     //endregion
 
@@ -216,8 +216,7 @@ class EditeProfileFragment : Fragment() {
             Log.e("TAG", "onActivityResult:imageUri $imageUri")
             binding?.profilePic?.setImageURI(imageUri)
             try {
-//                val bitmap = MediaStore.Images.Media.getBitmap( contentResolver, imageUri)
-//                uploadImage().setImageBitmap(bitmap)
+
             } catch (e: IOException) {
                 e.printStackTrace()
             }

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import com.example.gathering.R
 
 class splashActivity : AppCompatActivity() {
@@ -13,7 +15,7 @@ class splashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         supportActionBar!!.hide()
 
-        window.setFlags(
+          window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
@@ -21,6 +23,7 @@ class splashActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1000)
+        }, 3000)
     }
+
 }

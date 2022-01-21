@@ -2,15 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.khulud.gathering.fragmnets.BookMarkFragment"
-    android:background="@color/purple_200"
-    >
+    tools:context="com.khulud.gathering.fragmnets.BookMarkFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.khulud.gathering.model.EventsViewModel" />
+            type="com.khulud.gathering.model.ProfileViewModel" />
 
         <variable
             name="homeFragment"
@@ -31,9 +29,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventBookmarksRecycleView"
-                android:layout_width="409dp"
-                android:layout_height="597dp"
-                app:EventsList="@{viewModel.bookmarkItem}"
+                android:layout_width="406dp"
+                android:layout_height="651dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

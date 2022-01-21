@@ -40,7 +40,6 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //  val email =findViewById<EditText>(R.id.login_email).text.toString()
         binding?.btnLogin?.setOnClickListener {
             signIn()
         }

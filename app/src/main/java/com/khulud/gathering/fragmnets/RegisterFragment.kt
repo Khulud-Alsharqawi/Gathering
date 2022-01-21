@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.gathering.R
 import com.example.gathering.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 
 class RegisterFragment : Fragment() {
@@ -21,7 +20,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false)
         binding = fragmentRegisterBinding
         return fragmentRegisterBinding.root
@@ -46,7 +45,7 @@ class RegisterFragment : Fragment() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(regEmail, regPassword)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val firebaseUser: FirebaseUser = task.result!!.user!!
+                        task.result!!.user!!
                         Toast.makeText(this.requireContext(), "Logged in", Toast.LENGTH_SHORT)
                             .show()
                         findNavController().navigate(R.id.action_registerFragment_to_signInFragment)

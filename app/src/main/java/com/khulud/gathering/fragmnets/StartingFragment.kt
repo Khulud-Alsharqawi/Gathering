@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.gathering.R
@@ -32,13 +30,12 @@ class StartingFragment : Fragment() {
 
         isSignIn()
       binding?.btnToSignIn?.setOnClickListener{
-          findNavController().navigate(com.example.gathering.R.id.starting_to_signin)
-
+          findNavController().navigate(R.id.starting_to_signin)
 
       }
 
         binding?.btnToReg?.setOnClickListener {
-            findNavController().navigate(com.example.gathering.R.id.action_startingFragment_to_registerFragment)
+            findNavController().navigate(R.id.action_startingFragment_to_registerFragment)
         }
 
         binding?.btnTologout?.setOnClickListener {
@@ -46,11 +43,8 @@ class StartingFragment : Fragment() {
         }
 
         binding?.btnToProfile?.setOnClickListener {
-            findNavController().navigate(com.example.gathering.R.id.action_startingFragment_to_profileFragment)
+            findNavController().navigate(R.id.action_startingFragment_to_profileFragment)
         }
-
-
-
 
     }
 
